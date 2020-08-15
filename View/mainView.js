@@ -6,14 +6,21 @@ class MainView {
     this._model = model;
   }
 
+  // Render current entities
   render(){
-    let array = this._model._entities;
+    // Render static objects
+    let sArray = this._model._sEntities;
+    for(let i=0; i<sArray.length; i++){
+      fill(sArray[i]._colour);
+      circle(sArray[i]._xpos, sArray[i]._ypos, sArray[i]._radius*2);
+    }
 
-    let posx = array[0]._xpos;
-    let posy = array[0]._ypos;
-    let diameter = array[0]._radius*2;
-
-    circle(posx, posy, diameter);
+    // Render Dynamic objects
+    let dArray = this._model._dEntities;
+    for(let i=0; i<dArray.length; i++){
+      fill(dArray[i]._colour);
+      circle(dArray[i]._xpos, dArray[i]._ypos, dArray[i]._radius*2);
+    }
   }
 
 }
